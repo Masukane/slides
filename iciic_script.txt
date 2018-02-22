@@ -1,0 +1,132 @@
+[1]
+I'd like to tallk about "Ant colony optimization with multi-pheromones for solving constraint satisfaction problems."
+I'm Takuya Masukane from Takushoku University.
+
+[2]
+First of all, let me give the summary of this work.
+Our purpose is to propose new method to efficiently solve 
+hard constraint satisfaction problems.
+For the purpose, 
+we employ an algorithm based on ant colony optimization with another pheromone.
+As a result of this work, 
+we achieved a good result around the phase transition region.
+
+[3]
+In our work, the target is Graph Coloring Problem.
+It is one kind of the CSPs.
+(1)
+It is the problem to assign 3 colors to each vertex 
+without the same coloring at both ends of each edge.
+(2)
+For example, these graphs have violation here.
+Then, these coloring are solution.
+Now, in this study, we define "constraint density," d.
+It is the number of edges divided by the number of vertices.
+For the prior work, it is reported 
+that the instance which constraint density equals 
+from two point three to two point four is hard to solve.
+
+[4]
+Our model is based on Ant Colony Optimization.
+Ant Colony Optimization is the meta-heuristics 
+imitating the ants' behavior to find their feed.
+(1)
+In real world, one ant drops pheromone on the path to their feed.
+Then, other ants follow the pheromone 
+and they can find the feed efficiently.
+This is "pheromone communication."
+If the path is effective, many ants use the path 
+and amount of pheromone is increasing.
+But if the path is not effective, pheromone evaporate 
+and amount of pheromone is decreasing.
+
+[5]
+Ant system is the algorithm based on ACO.
+(1)
+Each ant constructs assignment probabilistically 
+according to the amount of pheromone, tau, 
+and the number of constraint violations, ita.
+(2)
+Then, pheromone is updated.
+All pathes evaporate.
+Then, according to the best assignment,
+pheromone graph is updated.
+(3)
+(4)
+
+[6]
+Cunning ant system is the algorithm improving ant system.
+The feature of this algorithm is borrowing assignments.
+(1)
+Cunning ant system has donor-ant and cunning-ant.
+Donor-ant has a assignment at the previous cycle.
+(2)
+Before cunning-ants construct their assignment, 
+donor-ants give cunning-ant a part of their assignments.
+(3)
+Then, the other variables are assigned according to pheromone and violation.
+(4)
+Then, at the next cycle, the cunning ants becomes the donor ants.
+For this algorithm, high-quality part of assignment at the previous cycle is available.
+Also, for borrowing, cAS reduces its search time.
+
+[7]
+However, these algorithm have a drawback.
+When pheromone trail is updated, 
+the amount of accumulation is retermined by this equation.
+However, in early search, best assignment should have many violations,
+and delta tau is small value.
+Therefore, the search should take much time.
+Then, we propose to provide several pheromone 
+such as effective reference in eraly search.
+
+[8]
+Now, let me talk about our proposed model.
+To achieve our purpose, in our model, we provide another pheromone.
+This pheromone is updated according to the worst assignment in the set.
+We call it "negative pheromone."
+Assign probability is this.
+When the amount of negative pheromone is increasing, 
+the assignment is reraly chosen.
+
+[9]
+This is the algorithm.
+The probability to assign value is different from naive.
+And the negative pheromone is stored apart from usual pheromone.
+Negative pheromone is updated according to the worst assignment.
+
+[10]
+To evaluate the effectiveness of our model, we make experiments.
+We compare cAS and cASNEP.
+The cASNEP is the algorithm based on ACO with cunning ants and negative pheromone.
+These are the results.
+First, about the percentage of solved instances, 
+we perform in several constraint density patterns.
+In all ceses, our proposed model overcome the naive cAS.
+In particular, in phase transition region, rho equals 2.3 and 2.4, 
+the effectiveness is remarkable.
+
+[11]
+Then, next result is about search cost.
+We perform the experiment in d equals 2.3.
+The horizontal line is the the number rank of the assignment construction.
+The figure shows that almost solutions find by 25,000 construction.
+And in cASNEP, the number of solution found by 25,000 construction is more than cAS.
+Therefore, cASNEP should find solutions stably.
+
+[12]
+These results are difference in the situation.
+Left figure shows the percentage of solved instances against the variation of rho.
+In almost cases, the proposed model is superior.
+Right figure shows the percentage of solved instances for larger instances.
+The cAS has less progress.
+However, the cASNEP grows gradually.
+
+[13]
+Finally, this is the conclusion.
+We proposed a new model based on ant colony optimization to solve CSPs.
+We provided another pheromone "negative pheromone."
+Then, our proposed method is superior from the several points of view than naive method.
+Our future work is to compare with other meta-heuristics,
+and to apply to other types of CSPs.
+Thank you.
